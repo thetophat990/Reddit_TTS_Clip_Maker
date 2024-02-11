@@ -1,2 +1,2 @@
-# shortform_content_automator
+# Reddit_TTS_Clip_Maker
 fix this
