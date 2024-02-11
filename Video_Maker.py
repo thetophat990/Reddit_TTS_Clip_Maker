@@ -55,16 +55,3 @@ if __name__ == "__main__":
     gameplay_video_start_offset = 5
     video_size = 1080, 1920
     make_video(output_path,backround_video_path,main_audio,cap_file_path,video_size=video_size)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-# we we we
