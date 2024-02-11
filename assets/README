@@ -1,0 +1,3 @@
+This directory is used to store general assets (eexcluding backround videos) for the program, at the moment, the only folder is is "Fonts" whitch
+is used to add external fonts for the subtitles, you can use any standard font file type, however .tff is prefered, make sure to place
+the font in the folder, and not for example, the zipped file containing it
