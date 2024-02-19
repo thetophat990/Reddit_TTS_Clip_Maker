@@ -1,6 +1,9 @@
 from praw import Reddit
+from re import sub
 from praw.models import MoreComments
 from random import randint
+
+rand_index = lambda i: randint(0, i - 1)
 
 def get_comment_string(
     api_user_agent : str,
@@ -8,45 +11,32 @@ def get_comment_string(
     client_secret : str,
     
     subreddits_list : list = ["AskReddit"], 
-    max_chars_of_response_string : int = 4095,
-    max_comments_in_string : int = 25,
-    min_chars_per_comment : int = 100,
-    max_posts_for_random_pool : int = 3
+    max_posts_for_random_pool : int = 5,
+    min_chars_per_post : int = 50
     
-) -> list[str] | str:
+) -> str:
     
     reddit_obj = Reddit(client_id=client_id, client_secret=client_secret, user_agent=api_user_agent)
 
-    subreddit_obj = reddit_obj.subreddit(subreddits_list[randint(0, len(subreddits_list) - 1)])
+    subreddit_obj = reddit_obj.subreddit(subreddits_list[rand_index(len(subreddits_list))])
 
-    submission_obj = list(subreddit_obj.top(time_filter='day', limit=max_posts_for_random_pool))[randint(0, max_posts_for_random_pool - 1)]
+    submission_obj = list(subreddit_obj.top(time_filter='day', limit=max_posts_for_random_pool))[rand_index(max_posts_for_random_pool)]
 
     comment_list_obj = []
 
     for top_comment in submission_obj.comments:
         if isinstance(top_comment, MoreComments): continue
-        comment_list_obj.append(top_comment)
-        
-    comment_list_obj = comment_list_obj[:max_comments_in_string]
-        
-    comment_list_obj = [comment.body for comment in comment_list_obj]
-
-    comment_list_obj = [comment for comment in comment_list_obj if len(comment) > min_chars_per_comment]
-    
-    comment_list_obj = [f"{comment}.." for comment in comment_list_obj]
-
+        if len(top_comment.body) >= min_chars_per_post:
+            comment_list_obj.append(top_comment.body + "..")  
+     
     comment_list_obj = sorted(comment_list_obj, key=len, reverse=True)
+    comment_list_obj.insert(0, submission_obj.title + "..")
+        
+    comment_str = ' '.join(comment_list_obj)
+    comment_str = comment_str.replace('\n', '')
+    comment_str = sub(r'[^\x00-\x7F]', '', comment_str)
 
-    comment_str_obj = ' '.join(comment_list_obj)
-
-    comment_str_obj = comment_str_obj.replace('\n',' ')
-
-    if len(comment_str_obj) >= max_chars_of_response_string:
-        comment_str_obj = [comment_str_obj[i:i+max_chars_of_response_string] for i in range(0, len(comment_str_obj), max_chars_of_response_string)]
-
-    comment_str_obj = f"{submission_obj.title}.. {comment_str_obj}"
-
-    return comment_str_obj
+    return comment_str
 
 if __name__ == "__main__":
     reddit_api_user_agent = "WINDOWS:redit_data_api_link:v1 (by /u/Easy_Consequence3087)"
