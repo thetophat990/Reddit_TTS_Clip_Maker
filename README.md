@@ -39,3 +39,15 @@ Install dependencies via PIP
 After this step, Be sure to correctly configure MoviePy, specifically be sure to install and set the paths to [imagemagick](https://www.imagemagick.org/script/index.php) and [FFMPEG](https://ffmpeg.org/), more info can be found [here](https://moviepy.readthedocs.io/en/latest/install.html)
 
 After this, you should place some video files in the `backround_video` folder, the videos can be any size, while any video codec should work, not that only `.mp4` files have been tested
+
+## Acknowledgements
+
+ - [OpenAI](https://openai.com/)
+ - [PRAW](https://pypi.org/project/praw/)
+ - [MoviePy](https://pypi.org/project/moviepy/)
+
+
+## Authors
+
+- [@thetophat990](https://github.com/thetophat990)
+
