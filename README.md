@@ -1,2 +1,2 @@
 # Reddit_TTS_Clip_Maker
-fix this
+Welcome to RedditTTS, your all-in-one solution for creating engaging Reddit reading style videos with ease. With our program, you can effortlessly generate ready-to-upload videos featuring text-to-speech voiceover of Reddit posts, accompanied by subtitles and a background video of your choice. Whether you're a content creator looking to diversify your offerings or simply want to share interesting Reddit content in a more dynamic format, RedditTTS streamlines the process, allowing you to focus on creating captivating content that resonates with your audience. Say goodbye to hours of manual editing – with RedditTTS, your video creation process just got a whole lot simpler.
