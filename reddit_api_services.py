@@ -24,19 +24,20 @@ def get_comment_string(
 
     comment_list_obj = []
 
-    for top_comment in submission_obj.comments:
-        if isinstance(top_comment, MoreComments): continue
-        if len(top_comment.body) >= min_chars_per_post:
-            comment_list_obj.append(top_comment.body + "..")  
+    for top_comment in submission_obj.comments:                        # Get a list of comment objects from the selected post
+        if isinstance(top_comment, MoreComments): continue             # If more comments are detected, ignore them
+        if len(top_comment.body) >= min_chars_per_post:                # Checks if the charicters of the comment are above the limit
+            comment_list_obj.append(top_comment.body + "..")           # If so, append the comment text to the list, add full stops to the end
      
-    comment_list_obj = sorted(comment_list_obj, key=len, reverse=True)
-    comment_list_obj.insert(0, submission_obj.title + "..")
+    comment_list_obj = sorted(comment_list_obj, key=len, reverse=True) # Sorts list from longest to shortest, so that the video is more engaging
+    comment_list_obj.insert(0, submission_obj.title + "..")            # Places the posts title at the start of the list
         
-    comment_str = ' '.join(comment_list_obj)
-    comment_str = comment_str.replace('\n', '')
-    comment_str = sub(r'[^\x00-\x7F]', '', comment_str)
+    comment_str = ' '.join(comment_list_obj)                           # Converts the list to a string
+    comment_str = comment_str.replace('\n', '')                        # Gets rid of newlines 
+    
+    comment_str = sub(r'[^\x00-\x7F]', '', comment_str)                # Ensures that the string containes only ascii charicters, e.g no emojis or non standard charicters
 
     return comment_str
 
-if __name__ == "__main__":
+if __name__ == "__main__":    # TODO add module test here
     pass
