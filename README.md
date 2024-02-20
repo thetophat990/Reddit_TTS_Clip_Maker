@@ -1,6 +1,9 @@
 
 # Reddit_TTS_Clip_Maker
 
+> [!warning]  
+> This repository is heavily work in progress, expect things to not work, or to break without warning or obvious reason
+
 Welcome to RedditTTS, your all-in-one solution for effortlessly creating engaging Reddit-style videos. With this tool, you can seamlessly generate ready-to-upload videos featuring text-to-speech voiceovers of Reddit posts, accompanied by subtitles and a background video of your choice. This efficient tool enables you to create Reddit-style videos in minutes, and facilitates quick integration onto short-form video sharing platforms such as TikTok or Instagram Reels. 
 ## Features
 
