@@ -1,9 +1,9 @@
-from praw import Reddit
-from re import sub
-from praw.models import MoreComments
-from random import randint
+from praw import Reddit                    # Used To access Reddits API
+from re import sub                         # Used to filter string to be ASCII-Only
+from praw.models import MoreComments       # Requierd to handle more comments error
+from random import randint                 # For random post selection
 
-rand_index = lambda i: randint(0, i - 1)
+rand_index = lambda i: randint(0, i - 1)   # Random Function
 
 def get_comment_string(
     api_user_agent : str,
@@ -16,11 +16,11 @@ def get_comment_string(
     
 ) -> str:
     
-    reddit_obj = Reddit(client_id=client_id, client_secret=client_secret, user_agent=api_user_agent)
+    reddit_obj = Reddit(client_id=client_id, client_secret=client_secret, user_agent=api_user_agent)    # Create reddit object
 
-    subreddit_obj = reddit_obj.subreddit(subreddits_list[rand_index(len(subreddits_list))])
+    subreddit_obj = reddit_obj.subreddit(subreddits_list[rand_index(len(subreddits_list))])    # Get subreddit object by random selection
 
-    submission_obj = list(subreddit_obj.top(time_filter='day', limit=max_posts_for_random_pool))[rand_index(max_posts_for_random_pool)]
+    submission_obj = list(subreddit_obj.top(time_filter='day', limit=max_posts_for_random_pool))[rand_index(max_posts_for_random_pool)]     # Get post object by random selection
 
     comment_list_obj = []
 
@@ -39,16 +39,4 @@ def get_comment_string(
     return comment_str
 
 if __name__ == "__main__":
-    reddit_api_user_agent = "WINDOWS:redit_data_api_link:v1 (by /u/Easy_Consequence3087)"
-    reddit_api_client_id = "_YfmYHjP37FG1V-2PWmmrQ"
-    reddit_api_client_secret = "rDXqGn34mrgpWoJ98nmeHL5XQUkDXg"
-    
-    response = get_comment_string(reddit_api_user_agent, reddit_api_client_id, reddit_api_client_secret)
-    
-    print(response)
-
-# CALCULATE TIME FOR EACH COMMENT TO SPEAK (e.g calculate how long it takes to say 1 letter, then times by letters ect)
-
-# DOWNLOAD ENOIGH COMMENTS FOR DESIRED TIME
-
-# ORDER IN NEAT STRING
+    pass
