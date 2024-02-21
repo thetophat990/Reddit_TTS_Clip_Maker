@@ -21,25 +21,27 @@ Before starting, you must obtain API Keys for both reddit and OpenAI
 
 ## Getting Started
 
-Clone the project
+Firstly, clone the project to any location
 
 ```bash
   git clone https://github.com/thetophat990/Reddit_TTS_Clip_Maker.git
 ```
 
-Go to the project directory
+then go to the project directory
 
 ```bash
   cd Reddit_TTS_Clip_Maker
 ```
 
-Install dependencies via PIP
+Lastly, install the dependencies via PIP, after this you can close the terminal
 
 ```bash
   pip install -r requirements.txt
 ``` 
 
-After this step, Be sure to correctly configure MoviePy, specifically be sure to install and set the paths to [imagemagick](https://www.imagemagick.org/script/index.php) and [FFMPEG](https://ffmpeg.org/), more info can be found [here](https://moviepy.readthedocs.io/en/latest/install.html)
+Next, Be sure to correctly configure MoviePy, specifically be sure to install and set the paths to [imagemagick](https://www.imagemagick.org/script/index.php) and [FFMPEG](https://ffmpeg.org/), more info can be found [here](https://moviepy.readthedocs.io/en/latest/install.html)
+
+Now you need to add the API credentials, in the project directory, find the `SETTINGS.py` file, in it you must change some of the values for the program to work, specifically, you need to change `REDDIT_API_USER_AGENT`, `REDDIT_API_CLIENT_ID`, `REDDIT_API_CLIENT_SECRET` and `OPENAI_API_KEY`. You should already have these values from [this](https://github.com/thetophat990/Reddit_TTS_Clip_Maker/edit/main/README.md#obtaining-api-keys) step, note that you can also change anyother settings you want, however this is not essential
 
 Finally, you should place some video files in the `backround_video` folder, the videos can be any size, while any video codec should work, not that only `.mp4` files have been tested
 
